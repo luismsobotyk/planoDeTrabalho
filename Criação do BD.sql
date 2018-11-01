@@ -1,7 +1,7 @@
 -- --------------------------------------------------------
 -- Servidor:                     127.0.0.1
--- Versão do servidor:           10.1.25-MariaDB - mariadb.org binary distribution
--- OS do Servidor:               Win32
+-- Versão do servidor:           10.1.36-MariaDB - MariaDB Server
+-- OS do Servidor:               Linux
 -- HeidiSQL Versão:              9.4.0.5125
 -- --------------------------------------------------------
 
@@ -13,7 +13,6 @@
 
 
 -- Copiando estrutura do banco de dados para planotrabalho
-drop database planotrabalho;
 CREATE DATABASE IF NOT EXISTS `planotrabalho` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `planotrabalho`;
 
@@ -24,60 +23,52 @@ CREATE TABLE IF NOT EXISTS `ativadmin` (
   `portaria` varchar(12) DEFAULT NULL,
   `professorId` int(11) DEFAULT NULL,
   `idTable` int(11) NOT NULL DEFAULT '6',
+  `CH` double DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `professorId` (`professorId`),
   CONSTRAINT `ativadmin_ibfk_1` FOREIGN KEY (`professorId`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=107 DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela planotrabalho.ativadmin: ~0 rows (aproximadamente)
-/*!40000 ALTER TABLE `ativadmin` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ativadmin` ENABLE KEYS */;
-
+-- Exportação de dados foi desmarcado.
 -- Copiando estrutura para tabela planotrabalho.ativensino
 CREATE TABLE IF NOT EXISTS `ativensino` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `atividade` text,
   `professorId` int(11) DEFAULT NULL,
   `idTable` int(11) NOT NULL DEFAULT '3',
+  `CH` double DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `professorId` (`professorId`),
   CONSTRAINT `ativensino_ibfk_1` FOREIGN KEY (`professorId`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=116 DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela planotrabalho.ativensino: ~0 rows (aproximadamente)
-/*!40000 ALTER TABLE `ativensino` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ativensino` ENABLE KEYS */;
-
+-- Exportação de dados foi desmarcado.
 -- Copiando estrutura para tabela planotrabalho.ativext
 CREATE TABLE IF NOT EXISTS `ativext` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `atividade` text,
   `professorId` int(11) DEFAULT NULL,
   `idTable` int(11) NOT NULL DEFAULT '5',
+  `CH` double DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `professorId` (`professorId`),
   CONSTRAINT `ativext_ibfk_1` FOREIGN KEY (`professorId`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela planotrabalho.ativext: ~0 rows (aproximadamente)
-/*!40000 ALTER TABLE `ativext` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ativext` ENABLE KEYS */;
-
+-- Exportação de dados foi desmarcado.
 -- Copiando estrutura para tabela planotrabalho.ativpesq
 CREATE TABLE IF NOT EXISTS `ativpesq` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `atividade` text,
   `professorId` int(11) DEFAULT NULL,
   `idTable` int(11) NOT NULL DEFAULT '4',
+  `CH` double DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `professorId` (`professorId`),
   CONSTRAINT `ativpesq_ibfk_1` FOREIGN KEY (`professorId`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela planotrabalho.ativpesq: ~0 rows (aproximadamente)
-/*!40000 ALTER TABLE `ativpesq` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ativpesq` ENABLE KEYS */;
-
+-- Exportação de dados foi desmarcado.
 -- Copiando estrutura para tabela planotrabalho.aulas
 CREATE TABLE IF NOT EXISTS `aulas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -89,12 +80,9 @@ CREATE TABLE IF NOT EXISTS `aulas` (
   PRIMARY KEY (`id`),
   KEY `professorId` (`professorId`),
   CONSTRAINT `aulas_ibfk_1` FOREIGN KEY (`professorId`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=170 DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela planotrabalho.aulas: ~2 rows (aproximadamente)
-/*!40000 ALTER TABLE `aulas` DISABLE KEYS */;
-/*!40000 ALTER TABLE `aulas` ENABLE KEYS */;
-
+-- Exportação de dados foi desmarcado.
 -- Copiando estrutura para tabela planotrabalho.identificacao
 CREATE TABLE IF NOT EXISTS `identificacao` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -106,12 +94,9 @@ CREATE TABLE IF NOT EXISTS `identificacao` (
   PRIMARY KEY (`id`),
   KEY `iduser` (`iduser`),
   CONSTRAINT `identificacao_ibfk_1` FOREIGN KEY (`iduser`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela planotrabalho.identificacao: ~0 rows (aproximadamente)
-/*!40000 ALTER TABLE `identificacao` DISABLE KEYS */;
-/*!40000 ALTER TABLE `identificacao` ENABLE KEYS */;
-
+-- Exportação de dados foi desmarcado.
 -- Copiando estrutura para tabela planotrabalho.permissoes
 CREATE TABLE IF NOT EXISTS `permissoes` (
   `nome` varchar(30) DEFAULT NULL,
@@ -119,14 +104,7 @@ CREATE TABLE IF NOT EXISTS `permissoes` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela planotrabalho.permissoes: ~3 rows (aproximadamente)
-/*!40000 ALTER TABLE `permissoes` DISABLE KEYS */;
-INSERT INTO `permissoes` (`nome`, `id`) VALUES
-	('Professor', 1),
-	('Avaliador', 2),
-	('Administrador', 3);
-/*!40000 ALTER TABLE `permissoes` ENABLE KEYS */;
-
+-- Exportação de dados foi desmarcado.
 -- Copiando estrutura para tabela planotrabalho.usuario
 CREATE TABLE IF NOT EXISTS `usuario` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -138,19 +116,16 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `aceitoPor` int(11) DEFAULT NULL,
   `nome` varchar(100) DEFAULT NULL,
   `dataEntrega` date DEFAULT NULL,
+  `ultimoLogin` date DEFAULT NULL,
+  `isProfessor` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `permissao` (`permissao`),
   KEY `referencia` (`aceitoPor`),
   CONSTRAINT `referencia` FOREIGN KEY (`aceitoPor`) REFERENCES `usuario` (`id`),
   CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`permissao`) REFERENCES `permissoes` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela planotrabalho.usuario: ~0 rows (aproximadamente)
-/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` (`id`, `email`, `permissao`, `idTable`, `entregue`, `entregaAceita`, `aceitoPor`, `nome`) VALUES
-	(3, 'teste@rolante.ifrs.edu.br', 2, 0, 0, 0, NULL, 'Teste');
-/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
-
+-- Exportação de dados foi desmarcado.
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
