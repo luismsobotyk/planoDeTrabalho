@@ -1,0 +1,22 @@
+html, body{
+	height: 100%;
+	width: 100%;
+	margin: 0, auto;
+}
+
+#cont{
+	margin-top: 5%;
+	/* position: relative;*/
+}
+
+.px{
+	margin-top: 2px;
+}
+
+.red-link{
+	color: #d84315;
+}
+
+.green-link{
+	color: #558b2f;
+}
